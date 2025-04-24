@@ -33,11 +33,12 @@ function showRiddle() {
     document.getElementById("message").textContent = "";
     document.getElementById("tip").classList.add("hidden");
 
-    // Wenn es sich um das zweite Rätsel handelt, zeige die Caesar-Scheibe
+    // Wenn es sich um das zweite Rätsel handelt, zeige die Caesar-Tabelle
     if (current === 1) {
-        document.getElementById("caesar-wheel").style.display = "block";
+        document.getElementById("caesar-table").style.display = "block";
+        generateCaesarTable();  // Tabelle erzeugen
     } else {
-        document.getElementById("caesar-wheel").style.display = "none";
+        document.getElementById("caesar-table").style.display = "none";
     }
 
     clearTimeout(tipTimeout);
@@ -60,7 +61,27 @@ function checkAnswer() {
     }
 }
 
-// Caesar-Scheibe Interaktivität
+// Caesar-Scheibe als Tabelle erzeugen
+function generateCaesarTable() {
+    const tableBody = document.querySelector("#caesar-table tbody");
+    tableBody.innerHTML = "";  // Tabelle zurücksetzen
+
+    for (let i = 0; i < alphabet.length; i++) {
+        const row = document.createElement("tr");
+
+        const shiftCell = document.createElement("td");
+        shiftCell.textContent = i;
+        row.appendChild(shiftCell);
+
+        const letterCell = document.createElement("td");
+        const letter = alphabet[(i + caesarKey) % 26];
+        letterCell.textContent = letter;
+        row.appendChild(letterCell);
+
+        tableBody.appendChild(row);
+    }
+}
+
 function rotateWheel(direction) {
     // Rotieren je nach Richtung
     if (direction === 'left') {
@@ -70,12 +91,7 @@ function rotateWheel(direction) {
     }
     
     document.getElementById("caesar-key").textContent = caesarKey;
-    rotateInnerWheel();
-}
-
-function rotateInnerWheel() {
-    const wheel = document.getElementById("caesar-inner-wheel");
-    wheel.style.transform = `rotate(${caesarKey * 13.8}deg)`; // 360° / 26 = 13.8°
+    generateCaesarTable();  // Tabelle nach der Änderung neu erzeugen
 }
 
 document.getElementById("rotate-left").addEventListener("click", () => rotateWheel('left'));
