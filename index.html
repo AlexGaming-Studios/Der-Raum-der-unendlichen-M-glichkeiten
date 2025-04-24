@@ -16,15 +16,23 @@
             <p id="message"></p>
             <div id="tip" class="hidden"></div>
 
-            <!-- Caesar-Scheibe für Rätsel 2 -->
-            <div id="caesar-wheel">
-                <div id="caesar-inner-wheel">
-                    <div id="caesar-letters">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
-                </div>
+            <!-- Caesar-Scheibe als Tabelle für Rätsel 2 -->
+            <div id="caesar-table" class="hidden">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Shift</th>
+                            <th>Zeichen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dynamische Zeilen werden hier von JavaScript hinzugefügt -->
+                    </tbody>
+                </table>
+                <button id="rotate-left">←</button>
+                <button id="rotate-right">→</button>
+                <p id="caesar-output">Caesar-Schlüssel: <span id="caesar-key">0</span></p>
             </div>
-            <button id="rotate-left">←</button>
-            <button id="rotate-right">→</button>
-            <p id="caesar-output">Caesar-Schlüssel: <span id="caesar-key">0</span></p>
 
             <!-- Bereich für Entschlüsseln von Rätsel 2 -->
             <button onclick="checkCaesarCipher()">Entschlüsseln</button>
