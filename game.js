@@ -6,61 +6,34 @@ const riddles = [
         tip: "Schau dir die Zahlen genau an – erkennst du eine bekannte Zahlenreihe?"
     },
     {
-        title: "Rätsel 2: Die verschlüsselte Nachricht",
-        description: "Im Koffer findest du eine Karte mit seltsamen Symbolen. Auf der Rückseite: „Löse den Code und finde die Zahl für den nächsten Schritt.“",
-        solution: "17",
-        tip: "Versuche einen Caesar-Code – verschiebe die Buchstaben im Alphabet."
-    },
-    {
-        title: "Rätsel 3: Das Uhrenrätsel",
-        description: "Vor dir steht eine alte Standuhr. Auf dem Zifferblatt sind nur die Zahlen 1, 3, 5, 7, 9 und 11 sichtbar. Auf einem Zettel steht: 'Der Schlüssel ist an der Stelle, an der sich der Mond befindet.'",
+        title: "Rätsel 2: Das Uhrenrätsel",
+        description: "Eine alte Standuhr zeigt nur die Zahlen 1, 3, 5, 7, 9 und 11. Ein Zettel sagt: „Der Schlüssel ist an der Stelle, an der sich der Mond befindet.“",
         solution: "5",
-        tip: "Überlege, welche Uhrzeit mit dem Mond assoziiert wird."
+        tip: "Welche Uhrzeit wird häufig mit dem Mond assoziiert?"
     },
     {
-        title: "Rätsel 4: Die Zahlenschrift",
-        description: "Auf einer Wand stehen Zahlen in einer seltsamen Reihenfolge: '| || ||| |||| |||||'. Darunter steht: 'Verändere die Reihenfolge, um den Code zu knacken.'",
+        title: "Rätsel 3: Die Zahlenschrift",
+        description: "An der Wand stehen Striche: „| || ||| |||| |||||“. Darunter steht: „Verändere die Reihenfolge, um den Code zu knacken.“",
         solution: "12345",
-        tip: "Schau dir die Striche genau an – sie repräsentieren Zahlen."
+        tip: "Zähle die Striche – jeder Block ist eine Zahl."
     },
     {
-        title: "Rätsel 5: Der Spiegel",
-        description: "Im Raum hängt ein Spiegel. Auf der Wand hinter dem Spiegel sind Zahlen geschrieben: 3745. Im Spiegel erscheinen sie als 5473.",
+        title: "Rätsel 4: Der Spiegel",
+        description: "Hinter einem Spiegel siehst du eine Zahl: 3745 – aber sie erscheint im Spiegel als 5473.",
         solution: "5473",
-        tip: "Denk daran, die Zahlen im Spiegel umzukehren."
+        tip: "Dreh die Zahl so, wie du sie im Spiegel sehen würdest."
     },
     {
-        title: "Rätsel 6: Die Lichter",
-        description: "Ein Lichtschalter an der Wand hat fünf Positionen. Daneben liegt ein Zettel mit den Zahlen 3, 1, 4, 2, 5.",
-        solution: "3, 1, 4, 2, 5",
-        tip: "Die Zahlen auf dem Zettel geben dir die Reihenfolge der Schalter."
+        title: "Rätsel 5: Die Lichter",
+        description: "Ein Schalter hat 5 Positionen. Ein Zettel liegt daneben: „Licht für die richtige Reihenfolge.“ Die Zahlen 3, 1, 4, 2, 5 stehen darauf.",
+        solution: "31425",
+        tip: "Die Zahlen geben die Umschaltreihenfolge der Positionen an."
     },
     {
-        title: "Rätsel 7: Der Schlüssel zum Ausgang",
-        description: "Du findest eine Kiste mit einem Zahlenschloss. Darunter stehen die Zahlen 13, 17, 5, 1, 2.",
+        title: "Rätsel 6: Der Schlüssel zum Ausgang",
+        description: "Eine Kiste zeigt die Zahlen 13, 17, 5, 1, 2. Aufschrift: „Der letzte Schlüssel ist die Summe der Zahlen.“",
         solution: "38",
-        tip: "Berechne die Summe der Zahlen."
-    },
-    // Neues Rätsel 8:
-    {
-        title: "Rätsel 8: Die geheime Farbe",
-        description: "In einem Raum sind verschiedene Farbfelder an der Wand. Darunter steht: 'Die Farbe der Freiheit.'",
-        solution: "Blau",
-        tip: "Denke an das Symbol der Freiheit."
-    },
-    // Neues Rätsel 9:
-    {
-        title: "Rätsel 9: Der Code des Schlüssels",
-        description: "In einem Schrank findest du einen Schlüssel, der mit Zahlen markiert ist: 2, 5, 8, 11, 14.",
-        solution: "16",
-        tip: "Finde den nächsten Wert in der Zahlenreihe."
-    },
-    // Neues Rätsel 10:
-    {
-        title: "Rätsel 10: Das verschlüsselte Bild",
-        description: "Auf einem Tisch liegt ein Bild mit einem Rätsel: 'Bilde das Bild zusammen.' Es scheint in Puzzle-Form zu sein, doch einige Teile fehlen.",
-        solution: "4 Teile",
-        tip: "Sieh dir das Bild genau an – es gibt ein Muster, das zu den fehlenden Teilen führt."
+        tip: "Addiere alle Zahlen zusammen."
     }
 ];
 
