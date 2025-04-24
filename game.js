@@ -15,7 +15,7 @@ const riddles = [
         title: "Rätsel 3: Das Uhrenrätsel",
         description: "Eine Standuhr zeigt nur die Zahlen 1, 3, 5, 7, 9, 11. Auf einem Zettel steht: „Der Schlüssel ist an der Stelle, an der sich der Mond befindet.“",
         solution: "5",
-        tip: "Überlege, welche Uhrzeit oft mit dem Mond assoziiert wird. Subtrahiere diese Zahl mit 6"
+        tip: "Überlege, welche Uhrzeit oft mit dem Mond assoziiert wird und"
     },
     {
         title: "Rätsel 4: Der Spiegel",
