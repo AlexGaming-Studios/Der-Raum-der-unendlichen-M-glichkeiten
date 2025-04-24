@@ -2,19 +2,35 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Der Raum der unendlichen Möglichkeiten</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="riddle-container">
-        <h2 id="riddle-title"></h2>
-        <p id="riddle-description"></p>
-        <input type="text" id="answer" placeholder="Antwort eingeben">
-        <button onclick="checkAnswer()">Prüfen</button>
-        <p id="message"></p>
-        <p id="tip" class="hidden"></p>
-    </div>
+    <div class="container">
+        <h1 id="riddle-title">Willkommen im Escape Room!</h1>
+        <div id="riddle-container">
+            <p id="riddle-description">Löse das erste Rätsel, um fortzufahren.</p>
+            <input type="text" id="answer" placeholder="Gib deine Antwort ein">
+            <button onclick="checkAnswer()">Antwort prüfen</button>
+            <p id="message"></p>
+            <div id="tip" class="hidden"></div>
 
+            <!-- Caesar-Scheibe für Rätsel 2 -->
+            <div id="caesar-wheel">
+                <div id="caesar-inner-wheel">
+                    <div id="caesar-letters">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+                </div>
+            </div>
+            <button id="rotate-left">←</button>
+            <button id="rotate-right">→</button>
+            <p id="caesar-output">Caesar-Schlüssel: <span id="caesar-key">0</span></p>
+
+            <!-- Bereich für Entschlüsseln von Rätsel 2 -->
+            <button onclick="checkCaesarCipher()">Entschlüsseln</button>
+        </div>
+    </div>
+    
     <script src="game.js"></script>
 </body>
 </html>
