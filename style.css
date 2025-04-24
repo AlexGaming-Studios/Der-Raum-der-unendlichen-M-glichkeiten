@@ -25,7 +25,7 @@ body {
   background-color: #222;
 }
 
-#room {
+#chapter-container {
   background-color: #333;
   padding: 20px;
   border-radius: 10px;
@@ -63,15 +63,6 @@ body {
   text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
 }
 
-/* shaking animation */
-@keyframes shaking {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-10px); }
-  50% { transform: translateX(10px); }
-  75% { transform: translateX(-10px); }
-  100% { transform: translateX(0); }
-}
-
-.shaking {
-  animation: shaking 0.5s ease-in-out;
+#next-chapter-container {
+  margin-top: 20px;
 }
