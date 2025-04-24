@@ -6,32 +6,32 @@ const riddles = [
         tip: "Schau dir die Zahlen genau an – erkennst du eine bekannte Zahlenreihe?"
     },
     {
-        title: "Rätsel 2: Das Uhrenrätsel",
-        description: "Eine alte Standuhr zeigt nur die Zahlen 1, 3, 5, 7, 9 und 11. Ein Zettel sagt: „Der Schlüssel ist an der Stelle, an der sich der Mond befindet.“",
-        solution: "5",
-        tip: "Welche Uhrzeit wird häufig mit dem Mond assoziiert?"
+        title: "Rätsel 2: Die Zahlenschrift",
+        description: "Du findest eine Wand mit Strichen: „| || ||| |||| |||||“. Darunter steht: „Verändere die Reihenfolge, um den Code zu knacken.“",
+        solution: "12345",
+        tip: "Jeder Strich steht für eine Zahl – erkennst du das Muster?"
     },
     {
-        title: "Rätsel 3: Die Zahlenschrift",
-        description: "An der Wand stehen Striche: „| || ||| |||| |||||“. Darunter steht: „Verändere die Reihenfolge, um den Code zu knacken.“",
-        solution: "12345",
-        tip: "Zähle die Striche – jeder Block ist eine Zahl."
+        title: "Rätsel 3: Das Uhrenrätsel",
+        description: "Du findest eine alte Standuhr. Auf dem Zifferblatt sind nur die Zahlen 1, 3, 5, 7, 9 und 11 sichtbar. Ein Zettel sagt: „Der Schlüssel ist an der Stelle, an der sich der Mond befindet.“",
+        solution: "5",
+        tip: "Welche Uhrzeit passt zum Mond? Denk an Mitternacht."
     },
     {
         title: "Rätsel 4: Der Spiegel",
-        description: "Hinter einem Spiegel siehst du eine Zahl: 3745 – aber sie erscheint im Spiegel als 5473.",
+        description: "Im Raum hängt ein Spiegel. Dahinter siehst du die Zahl 3745 – doch im Spiegel erscheint 5473.",
         solution: "5473",
-        tip: "Dreh die Zahl so, wie du sie im Spiegel sehen würdest."
+        tip: "Dreh die Zahl so, wie du sie im Spiegel siehst."
     },
     {
         title: "Rätsel 5: Die Lichter",
-        description: "Ein Schalter hat 5 Positionen. Ein Zettel liegt daneben: „Licht für die richtige Reihenfolge.“ Die Zahlen 3, 1, 4, 2, 5 stehen darauf.",
+        description: "Ein Lichtschalter hat 5 Positionen. Daneben: „Licht für die richtige Reihenfolge.“ Und der Zettel zeigt: 3, 1, 4, 2, 5.",
         solution: "31425",
-        tip: "Die Zahlen geben die Umschaltreihenfolge der Positionen an."
+        tip: "Folge der Reihenfolge auf dem Zettel beim Umschalten."
     },
     {
         title: "Rätsel 6: Der Schlüssel zum Ausgang",
-        description: "Eine Kiste zeigt die Zahlen 13, 17, 5, 1, 2. Aufschrift: „Der letzte Schlüssel ist die Summe der Zahlen.“",
+        description: "Eine Kiste mit einem Zahlenschloss trägt die Aufschrift: „Der letzte Schlüssel ist die Summe der Zahlen: 13, 17, 5, 1, 2.“",
         solution: "38",
         tip: "Addiere alle Zahlen zusammen."
     }
@@ -64,6 +64,13 @@ function showRiddle() {
 function checkAnswer() {
     const input = document.getElementById("answer").value.trim();
     const correct = riddles[current].solution;
+
+    // Spezialfall: Rätsel 3 (Index 2) — Eingabe "12" ergibt Lösung "5"
+    if (current === 2 && input === "12") {
+        document.getElementById("message").textContent = "Mitternacht erkannt! Die gesuchte Zahl ist: 5";
+        document.getElementById("answer").value = "5";
+        return;
+    }
 
     if (input === correct) {
         document.getElementById("message").textContent = "Richtig!";
