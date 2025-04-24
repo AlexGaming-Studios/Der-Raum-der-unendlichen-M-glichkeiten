@@ -2,18 +2,20 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escape Room Spiel</title>
+    <title>Escape Room</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Willkommen im Escape Room!</h1>
-        <p id="riddle">Löse das erste Rätsel!</p>
-        <input type="text" id="answer" placeholder="Deine Antwort...">
-        <button onclick="checkAnswer()">Antwort überprüfen</button>
-        <p id="tip"></p>
-        <p id="message"></p>
+        <h1>Escape Room</h1>
+        <div id="riddle-container">
+            <h2 id="riddle-title"></h2>
+            <p id="riddle-description"></p>
+            <input type="text" id="answer" placeholder="Deine Antwort...">
+            <button onclick="checkAnswer()">Antwort prüfen</button>
+            <p id="tip" class="hidden"></p>
+            <p id="message"></p>
+        </div>
     </div>
     <script src="game.js"></script>
 </body>
