@@ -3,27 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Der Raum der unendlichen Möglichkeiten</title>
+  <title>Rätselspiel</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div id="game-container">
     <div id="timer-container">
-      <span id="timer">05:00</span>
+      <p>Verbleibende Zeit: <span id="timer">60</span> Sekunden</p>
     </div>
-    <div id="room-container">
-      <div id="room">
-        <h1>Willkommen im Raum</h1>
-        <p>Versuche, das Rätsel zu lösen, bevor die Zeit abläuft.</p>
-        <button id="start-button" onclick="startGame()">Start</button>
-      </div>
+    <div id="room">
+      <p>Versuche, das Rätsel zu lösen, bevor die Zeit abläuft.</p>
+      <p id="riddle">Was ergibt die Summe von 3 + 6 x 2 - 4?</p>
+      <input type="text" id="answer-input" placeholder="Antwort eingeben" />
+      <button id="submit-answer">Antwort einreichen</button>
+      <p id="message-container"></p>
     </div>
-    <div id="message-container" class="hidden">
-      <p id="message"></p>
-      <button onclick="resetGame()">Neustart</button>
+    <div id="game-over" class="hidden">
+      <p>Game Over!</p>
+      <p>Der Raum hat sich erschüttert und es ist zu spät!</p>
     </div>
   </div>
-
   <script src="game.js"></script>
 </body>
 </html>
