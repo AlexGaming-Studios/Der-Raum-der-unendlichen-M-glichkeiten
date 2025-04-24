@@ -11,12 +11,12 @@ const riddles = [
         solution: "12345",
         tip: "Zähle die Striche – sie stellen Zahlen dar!"
     },
-    {
-        title: "Rätsel 3: Das Uhrenrätsel",
-        description: "Eine Standuhr zeigt nur die Zahlen 1, 3, 5, 7, 9, 11. Auf einem Zettel steht: „Der Schlüssel ist an der Stelle, an der sich der Mond befindet.“",
-        solution: "5",
-        tip: "Überlege, welche Uhrzeit oft mit dem Mond assoziiert wird und"
-    },
+{
+    title: "Rätsel 3: Das Uhrenrätsel",
+    description: "Eine Standuhr zeigt nur die Zahlen 1, 3, 5, 7, 9, 11. Auf einem Zettel steht: „Der Schlüssel ist an der Stelle, an der sich der Mond befindet.“",
+    solution: "5",
+    tip: "Überlege, welche Uhrzeit oft mit dem Mond assoziiert wird und subtrahiere sie mit 7."
+},
     {
         title: "Rätsel 4: Der Spiegel",
         description: "Hinter einem Spiegel erkennst du die Zahl 3745 – aber spiegelverkehrt. Welche Zahl ist es wirklich?",
