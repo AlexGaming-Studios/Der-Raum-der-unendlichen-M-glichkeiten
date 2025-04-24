@@ -9,12 +9,15 @@ const riddles = [
         title: "Rätsel 2: Die verschlüsselte Nachricht",
         description: "Im Koffer findest du eine Karte mit seltsamen Symbolen. Auf der Rückseite: „Löse den Code und finde die Zahl für den nächsten Schritt.“",
         solution: "17",
-        tip: "Versuche einen Caesar-Code – verschiebe die Buchstaben im Alphabet."
+        tip: "Versuche einen Caesar-Code – verschiebe die Buchstaben im Alphabet.",
+        encryptedMessage: "Khoor Zruog" // Beispiel: "Hello World" verschlüsselt
     }
 ];
 
 let current = 0;
 let tipTimeout;
+let caesarKey = 0;
+const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 function showRiddle() {
     if (current >= riddles.length) {
@@ -29,6 +32,13 @@ function showRiddle() {
     document.getElementById("answer").value = "";
     document.getElementById("message").textContent = "";
     document.getElementById("tip").classList.add("hidden");
+
+    // Wenn es sich um das zweite Rätsel handelt, zeige die Caesar-Scheibe
+    if (current === 1) {
+        document.getElementById("caesar-wheel").style.display = "block";
+    } else {
+        document.getElementById("caesar-wheel").style.display = "none";
+    }
 
     clearTimeout(tipTimeout);
     tipTimeout = setTimeout(() => {
@@ -47,6 +57,55 @@ function checkAnswer() {
         setTimeout(showRiddle, 1000);
     } else {
         document.getElementById("message").textContent = "Falsch. Versuch's nochmal oder warte auf den Tipp.";
+    }
+}
+
+// Caesar-Scheibe Interaktivität
+function rotateWheel(direction) {
+    // Rotieren je nach Richtung
+    if (direction === 'left') {
+        caesarKey = (caesarKey - 1 + 26) % 26;  // Links drehen
+    } else if (direction === 'right') {
+        caesarKey = (caesarKey + 1) % 26;  // Rechts drehen
+    }
+    
+    document.getElementById("caesar-key").textContent = caesarKey;
+    rotateInnerWheel();
+}
+
+function rotateInnerWheel() {
+    const wheel = document.getElementById("caesar-inner-wheel");
+    wheel.style.transform = `rotate(${caesarKey * 13.8}deg)`; // 360° / 26 = 13.8°
+}
+
+document.getElementById("rotate-left").addEventListener("click", () => rotateWheel('left'));
+document.getElementById("rotate-right").addEventListener("click", () => rotateWheel('right'));
+
+// Die Funktion zum Entschlüsseln der Nachricht
+function decryptCaesar(text, shift) {
+    let result = '';
+    for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        if (alphabet.includes(char.toUpperCase())) {
+            const newChar = alphabet[(alphabet.indexOf(char.toUpperCase()) + shift) % 26];
+            result += char === char.toUpperCase() ? newChar : newChar.toLowerCase();
+        } else {
+            result += char;
+        }
+    }
+    return result;
+}
+
+// Beispiel: Text entschlüsseln, der mit dem aktuellen Caesar-Schlüssel verschlüsselt wurde
+function checkCaesarCipher() {
+    const encryptedMessage = riddles[1].encryptedMessage;  // Text aus Rätsel 2
+    const decryptedMessage = decryptCaesar(encryptedMessage, caesarKey);
+    document.getElementById("message").textContent = "Entschlüsselte Nachricht: " + decryptedMessage;
+
+    // Wenn der Text entschlüsselt wurde, und die Zahl 17 gefunden wird:
+    if (decryptedMessage.includes("Hello World")) {
+        current++;
+        setTimeout(showRiddle, 1000);
     }
 }
 
