@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Der Raum der unendlichen Möglichkeiten</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-container">
+    <div id="timer-container">
+      <span id="timer">05:00</span>
+    </div>
+    <div id="room-container">
+      <div id="room">
+        <h1>Willkommen im Raum</h1>
+        <p>Versuche, das Rätsel zu lösen, bevor die Zeit abläuft.</p>
+        <button id="start-button" onclick="startGame()">Start</button>
+      </div>
+    </div>
+    <div id="message-container" class="hidden">
+      <p id="message"></p>
+      <button onclick="resetGame()">Neustart</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
