@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f3f4f6;
     color: #333;
     display: flex;
     justify-content: center;
@@ -14,61 +14,38 @@ body {
     padding: 20px;
     background-color: white;
     border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
 }
 
-#riddle-container {
-    margin-top: 20px;
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
-input[type="text"] {
+input {
     padding: 10px;
-    margin: 10px 0;
-    width: 70%;
+    font-size: 16px;
+    width: 80%;
+    margin-bottom: 10px;
 }
 
 button {
-    padding: 10px 15px;
-    background-color: #007bff;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
     color: white;
     border: none;
-    cursor: pointer;
-    margin-top: 10px;
+    border-radius: 5px;
+    width: 80%;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #45a049;
 }
 
-.hidden {
-    display: none;
-}
-
-#caesar-table {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-#caesar-table table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-#caesar-table th, #caesar-table td {
-    padding: 8px;
-    border: 1px solid #ddd;
-}
-
-#rotate-left, #rotate-right {
-    font-size: 18px;
-    margin: 10px;
-    padding: 5px 10px;
-    cursor: pointer;
-}
-
-#caesar-output {
-    font-size: 16px;
-    text-align: center;
+p {
+    margin-top: 10px;
+    font-size: 14px;
 }
