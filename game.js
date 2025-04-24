@@ -1,105 +1,94 @@
-// game.js
+document.addEventListener('DOMContentLoaded', function () {
+    const startButton = document.getElementById('start-button');
+    const gameScreen = document.getElementById('game-screen');
+    const intro = document.getElementById('intro');
+    const submitButton = document.getElementById('submit-answer');
+    const answerInput = document.getElementById('answer-input');
+    const currentChapter = document.getElementById('current-chapter');
+    const currentRiddle = document.getElementById('current-riddle');
+    const timeDisplay = document.getElementById('time');
+    const getTipButton = document.getElementById('get-tip');
+    const tipText = document.getElementById('tip-text');
 
-let timer = 60; // Startzeit in Sekunden
-let countdown;
-let currentChapter = 1;
-let gameOver = false;
-let correctAnswer = 8; // Korrekte Antwort für das erste Rätsel (3 + 6 x 2 - 4)
+    const puzzles = [
+        { chapter: "Kapitel 1: Der Eingang", riddle: "Der Schlüssel liegt in der Zahl der Buchstaben des ersten Wortes, das du siehst.", answer: "6", timeLimit: 60 },
+        { chapter: "Kapitel 2: Der Flur der Spiegel", riddle: "Die Spiegel zeigen die Zahl „2“, aber sie ist gespiegelt. Welche Zahl ist richtig?", answer: "5", timeLimit: 60 },
+        { chapter: "Kapitel 3: Die Uhr des Schicksals", riddle: "Ordne die Uhren in der Reihenfolge ihrer Stunde: 1:00, 4:00, 12:00, 3:00, 9:00.", answer: "1, 3, 4, 9, 12", timeLimit: 60 },
+        // Weitere Rätsel hier hinzufügen
+    ];
 
-const chapters = [
-  {
-    title: "Kapitel 1: Der Anfang",
-    description: "Du befindest dich in einem geheimen Raum. Vor dir liegt ein mysteriöses Rätsel. Deine Reise beginnt hier.",
-    riddle: "Was ist 3 + 6 x 2 - 4?",
-    answer: 8,
-    nextChapter: 2
-  },
-  {
-    title: "Kapitel 2: Das Dunkel",
-    description: "Das nächste Rätsel wartet auf dich. Du hörst das Rauschen des Windes im Hintergrund.",
-    riddle: "Was ist 12 ÷ 4 + 5?",
-    answer: 8,
-    nextChapter: 3
-  },
-  {
-    title: "Kapitel 3: Das Geheimnis",
-    description: "Du stehst vor einer verschlossenen Tür. Nur das Rätsel kann dich hindurch lassen.",
-    riddle: "Was ist 15 - (3 x 2)?",
-    answer: 9,
-    nextChapter: 4
-  },
-  {
-    title: "Kapitel 4: Das Ende",
-    description: "Du hast das letzte Rätsel erreicht. Es ist dein letzter Test, bevor du entkommen kannst.",
-    riddle: "Was ergibt 7 x 2 + 6?",
-    answer: 20,
-    nextChapter: null // Endkapitel
-  }
-];
+    let currentPuzzleIndex = 0;
+    let timer;
+    let remainingTime = puzzles[currentPuzzleIndex].timeLimit;
 
-// Timer starten
-function startTimer() {
-  countdown = setInterval(updateTimer, 1000);
-}
+    // Spiel starten
+    startButton.addEventListener('click', function () {
+        intro.classList.add('hidden');
+        gameScreen.classList.remove('hidden');
+        startTimer();
+        loadPuzzle();
+    });
 
-// Timer aktualisieren
-function updateTimer() {
-  if (timer <= 0) {
-    clearInterval(countdown);
-    gameOver = true;
-    document.getElementById('game-over').classList.remove('hidden');
-    document.getElementById('chapter-container').classList.add('shaking'); // Schüttel-Animation aktivieren
-    document.getElementById('message-container').innerText = "Die Zeit ist abgelaufen!";
-    return;
-  }
+    // Antwort abgeben
+    submitButton.addEventListener('click', function () {
+        const userAnswer = answerInput.value.trim();
+        if (userAnswer === puzzles[currentPuzzleIndex].answer) {
+            alert('Rätsel gelöst!');
+            currentPuzzleIndex++;
+            if (currentPuzzleIndex < puzzles.length) {
+                loadPuzzle();
+            } else {
+                alert('Herzlichen Glückwunsch, du hast das Spiel gewonnen!');
+            }
+        } else {
+            alert('Falsche Antwort. Versuche es noch einmal.');
+        }
+        answerInput.value = '';
+    });
 
-  timer--;
-  document.getElementById('timer').innerText = timer;
-}
+    // Tipp holen
+    getTipButton.addEventListener('click', function () {
+        if (remainingTime <= 50) {
+            tipText.textContent = "Vielleicht hilft dir ein mathematischer Ansatz im Labyrinthraum?";
+        } else if (remainingTime <= 40) {
+            tipText.textContent = "Überprüfe noch einmal die Zahlenschlösser.";
+        } else {
+            tipText.textContent = "Schau genau auf die Zahlen und ihre Bedeutungen.";
+        }
+    });
 
-// Rätsel und Kapitel aktualisieren
-function loadChapter() {
-  let chapter = chapters[currentChapter - 1];
-  document.getElementById('chapter-title').innerText = chapter.title;
-  document.getElementById('chapter-description').innerText = chapter.description;
-  document.getElementById('riddle').innerText = chapter.riddle;
-}
-
-// Nächste Kapitel starten
-function nextChapter() {
-  if (gameOver) return; // Wenn das Spiel vorbei ist, nichts tun
-
-  let chapter = chapters[currentChapter - 1];
-  let userAnswer = parseInt(document.getElementById('answer-input').value);
-
-  if (userAnswer === chapter.answer) {
-    document.getElementById('message-container').innerText = "Rätsel gelöst! Du kannst weitermachen!";
-    document.getElementById('message-container').style.display = "block";
-
-    // Wenn es ein nächstes Kapitel gibt
-    if (chapter.nextChapter) {
-      currentChapter = chapter.nextChapter;
-      loadChapter();
-    } else {
-      // Spiel gewonnen, Endkapitel erreicht
-      document.getElementById('message-container').innerText = "Du hast das Abenteuer erfolgreich abgeschlossen!";
-      document.getElementById('next-chapter-container').classList.add('hidden');
+    // Puzzle laden
+    function loadPuzzle() {
+        const puzzle = puzzles[currentPuzzleIndex];
+        currentChapter.textContent = puzzle.chapter;
+        currentRiddle.textContent = puzzle.riddle;
+        remainingTime = puzzle.timeLimit;
+        timeDisplay.textContent = formatTime(remainingTime);
+        resetTimer();
     }
-  } else {
-    document.getElementById('message-container').innerText = "Falsche Antwort! Versuche es nochmal.";
-    document.getElementById('message-container').style.display = "block";
-  }
-}
 
-document.getElementById('submit-answer').addEventListener('click', nextChapter);
+    // Timer starten
+    function startTimer() {
+        timer = setInterval(function () {
+            remainingTime--;
+            timeDisplay.textContent = formatTime(remainingTime);
+            if (remainingTime <= 0) {
+                clearInterval(timer);
+                alert('Zeit abgelaufen!');
+            }
+        }, 1000);
+    }
 
-document.getElementById('next-chapter-btn').addEventListener('click', function() {
-  document.getElementById('next-chapter-container').classList.add('hidden');
-  document.getElementById('game-over').classList.add('hidden');
-  loadChapter();
-  startTimer();
+    // Timer zurücksetzen
+    function resetTimer() {
+        clearInterval(timer);
+        startTimer();
+    }
+
+    // Zeit formatieren
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secondsLeft = seconds % 60;
+        return `${String(minutes).padStart(2, '0')}:${String(secondsLeft).padStart(2, '0')}`;
+    }
 });
-
-// Initiales Laden des Spiels
-loadChapter();
-startTimer();
