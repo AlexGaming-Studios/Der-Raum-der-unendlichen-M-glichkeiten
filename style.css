@@ -5,25 +5,28 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7fa;
-    color: #333;
+    font-family: 'Arial', sans-serif;
+    background-color: #202020;
+    color: #e1e1e1;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
-    background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+    background: url('https://www.transparenttextures.com/patterns/black-tile.png'), linear-gradient(to bottom, #1b1b1b, #2e2e2e);
+    background-size: cover;
+    font-size: 16px;
+    overflow: hidden;
 }
 
 .container {
-    background-color: #fff;
+    background-color: #333;
     border-radius: 12px;
-    padding: 30px;
+    padding: 40px;
     width: 450px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
     text-align: center;
     transition: transform 0.3s ease;
+    color: #e1e1e1;
 }
 
 .container:hover {
@@ -32,51 +35,55 @@ body {
 
 h1, h2 {
     font-size: 2rem;
-    margin-bottom: 20px;
-    color: #333;
+    margin-bottom: 15px;
+    color: #f5a623;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 p {
-    font-size: 1.1rem;
-    color: #555;
+    font-size: 1.2rem;
+    color: #c0c0c0;
     margin-bottom: 20px;
+    line-height: 1.5;
 }
 
 input[type="text"] {
     padding: 12px;
     width: 80%;
     border-radius: 6px;
-    border: 2px solid #ccc;
+    border: 2px solid #444;
     margin-bottom: 20px;
-    font-size: 1rem;
-    color: #333;
+    font-size: 1.1rem;
+    color: #e1e1e1;
+    background-color: #222;
     transition: border-color 0.3s ease;
 }
 
 input[type="text"]:focus {
     outline: none;
-    border-color: #007bff;
+    border-color: #f5a623;
 }
 
 button {
     padding: 12px 25px;
-    background-color: #007bff;
+    background-color: #f5a623;
     color: white;
     border: none;
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #f58a1f;
 }
 
 #tip {
     font-style: italic;
-    color: #ff6600;
-    margin-top: 15px;
+    color: #ff6347;
+    margin-top: 20px;
 }
 
 .hidden {
@@ -88,6 +95,7 @@ button:hover {
     width: 100%;
     border-radius: 8px;
     overflow: hidden;
+    background-color: #2b2b2b;
 }
 
 #caesar-table table {
@@ -98,18 +106,19 @@ button:hover {
 #caesar-table th, #caesar-table td {
     padding: 12px;
     text-align: center;
-    border: 1px solid #ddd;
+    border: 1px solid #444;
     font-size: 1.1rem;
 }
 
 #caesar-table th {
-    background-color: #f2f2f2;
+    background-color: #444;
+    color: #f5a623;
 }
 
 #rotate-left, #rotate-right {
     padding: 8px 16px;
     font-size: 1.5rem;
-    background-color: #e9ecef;
+    background-color: #444;
     border: none;
     cursor: pointer;
     border-radius: 8px;
@@ -117,19 +126,19 @@ button:hover {
 }
 
 #rotate-left:hover, #rotate-right:hover {
-    background-color: #ccc;
+    background-color: #f5a623;
 }
 
 #caesar-output {
     font-size: 1.2rem;
-    color: #333;
+    color: #e1e1e1;
     margin-top: 20px;
 }
 
 #message {
     margin-top: 20px;
     font-weight: bold;
-    color: #333;
+    color: #f5a623;
 }
 
 @media (max-width: 480px) {
