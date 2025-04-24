@@ -45,34 +45,20 @@ button:hover {
     display: none;
 }
 
-#caesar-wheel {
-    margin: 20px auto;
-    width: 200px;
-    height: 200px;
-    border: 10px solid #000;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+#caesar-table {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-#caesar-inner-wheel {
-    position: absolute;
-    width: 180px;
-    height: 180px;
-    transform-origin: center center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#caesar-letters {
-    font-size: 24px;
-    display: flex;
-    flex-wrap: wrap;
+#caesar-table table {
     width: 100%;
-    justify-content: space-between;
+    border-collapse: collapse;
+}
+
+#caesar-table th, #caesar-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
 }
 
 #rotate-left, #rotate-right {
