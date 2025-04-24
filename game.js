@@ -10,36 +10,6 @@ const riddles = [
         description: "Im Koffer findest du eine Karte mit seltsamen Symbolen. Auf der Rückseite: „Löse den Code und finde die Zahl für den nächsten Schritt.“",
         solution: "17",
         tip: "Versuche einen Caesar-Code – verschiebe die Buchstaben im Alphabet."
-    },
-    {
-        title: "Rätsel 3: Das Uhrenrätsel",
-        description: "Die Standuhr zeigt nur die ungeraden Zahlen. Ein Zettel sagt: „Der Schlüssel ist an der Stelle, an der sich der Mond befindet.“",
-        solution: "12",
-        tip: "Welche Uhrzeit wird mit dem Mond assoziiert?"
-    },
-    {
-        title: "Rätsel 4: Die Zahlenschrift",
-        description: "An der Wand steht: | || ||| |||| |||||. Darunter: „Verändere die Reihenfolge, um den Code zu knacken.“",
-        solution: "12345",
-        tip: "Zähle die Striche. Was bedeuten sie?"
-    },
-    {
-        title: "Rätsel 5: Der Spiegel",
-        description: "Im Spiegel siehst du 5473. Auf der Wand dahinter steht 3745 – spiegelverkehrt.",
-        solution: "5473",
-        tip: "Dreh die Zahl aus dem Spiegel um!"
-    },
-    {
-        title: "Rätsel 6: Die Lichter",
-        description: "Ein Schalter mit fünf Positionen. Auf dem Zettel: 3, 1, 4, 2, 5.",
-        solution: "31425",
-        tip: "Die Reihenfolge der Schalter ist der Schlüssel."
-    },
-    {
-        title: "Rätsel 7: Der Schlüssel zum Ausgang",
-        description: "Auf einer Kiste steht: „Der letzte Schlüssel ist die Summe der Zahlen.“ Daneben: 13, 17, 5, 1, 2.",
-        solution: "38",
-        tip: "Addiere alle Zahlen."
     }
 ];
 
@@ -48,7 +18,8 @@ let tipTimeout;
 
 function showRiddle() {
     if (current >= riddles.length) {
-        document.getElementById("riddle-container").innerHTML = "<h2>Herzlichen Glückwunsch!</h2><p>Du hast alle Rätsel gelöst!</p>";
+        document.getElementById("riddle-container").innerHTML =
+            "<h2>Herzlichen Glückwunsch!</h2><p>Du hast alle Rätsel gelöst!</p>";
         return;
     }
 
@@ -63,7 +34,7 @@ function showRiddle() {
     tipTimeout = setTimeout(() => {
         document.getElementById("tip").textContent = "Tipp: " + riddle.tip;
         document.getElementById("tip").classList.remove("hidden");
-    }, 10000); // 10 Sekunden (für Demo-Zwecke)
+    }, 10000); // 10 Sekunden
 }
 
 function checkAnswer() {
